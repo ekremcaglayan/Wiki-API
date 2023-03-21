@@ -31,9 +31,7 @@ app.route("/articles").get(function(req, res){
     newArticle.save().then(function(){
         res.send("Succesfully send");
     });
-});
-
-app.delete("/articles", function(req, res){
+}).delete(function(req, res){
     Article.deleteMany().then(function(){
         res.send("Succesfully deleted all articles")
     });
