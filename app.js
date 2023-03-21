@@ -22,9 +22,7 @@ app.route("/articles").get(function(req, res){
     Article.find().then(function(foundArticles){
         res.send(foundArticles);
     });
-});
-
-app.post("/articles", function(req, res){
+}).post(function(req, res){
     const newArticle = new Article({
         title: req.body.title,
         content: req.body.content
