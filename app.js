@@ -51,9 +51,17 @@ app.route("/articles/:articleTitle")
 .put(function(req, res){
     Article.replaceOne(
         {title: req.params.articleTitle},
-        {title: req.body.title, content: req.body.content},
+        {title: req.body.title, content: req.body.content}
     ).then(function(){
         res.send("Successfully updated");
+    });
+})
+.patch(function(req, res){
+    Article.updateOne(
+        {title: req.params.articleTitle},
+        {title: req.body.title, content: req.body.content}
+    ).then(function(){
+        res.send("Successfully updated article");
     });
 });
 
