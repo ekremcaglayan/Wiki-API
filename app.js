@@ -63,6 +63,13 @@ app.route("/articles/:articleTitle")
     ).then(function(){
         res.send("Successfully updated article");
     });
+})
+.delete(function(req, res){
+    Article.deleteOne(
+        {title: req.params.articleTitle}
+    ).then(function(){
+        res.send("Successfully deleted")
+    });
 });
 
 app.listen(3000, function() {
