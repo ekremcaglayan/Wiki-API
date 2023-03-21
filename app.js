@@ -40,11 +40,20 @@ app.route("/articles")
     });
 });
 
+// SPECIFIC ARTICLE ROUTE
 
 app.route("/articles/:articleTitle")
 .get(function(req, res){
     Article.findOne({title: req.params.articleTitle}).then(function(foundArticle){
         res.send(foundArticle);
+    });
+})
+.put(function(req, res){
+    Article.replaceOne(
+        {title: req.params.articleTitle},
+        {title: req.body.title, content: req.body.content},
+    ).then(function(){
+        res.send("Successfully updated");
     });
 });
 
